@@ -29,4 +29,13 @@ export default defineConfig({
     ],
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue", "yaml"],
   },
+  css:{
+    preprocessorOptions: {
+      less: {
+        math: 'always',
+        relativeUrls: true,
+        javascriptEnabled: true
+      }
+    }
+  }
 })
