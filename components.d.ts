@@ -8,6 +8,15 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
+    AFlex: typeof import('ant-design-vue/es')['Flex']
+    AInput: typeof import('ant-design-vue/es')['Input']
+    ALayout: typeof import('ant-design-vue/es')['Layout']
+    ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
+    ASelect: typeof import('ant-design-vue/es')['Select']
+    ASwitch: typeof import('ant-design-vue/es')['Switch']
+    Channels: typeof import('./src/components/Channels.vue')['default']
+    ContactDatatable: typeof import('./src/components/contact/ContactDatatable.vue')['default']
+    ContactFilter: typeof import('./src/components/contact/ContactFilter.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
   }
 }

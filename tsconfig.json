@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -29,7 +29,10 @@
     ]
   },
   "include": [
-    "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/**/*.d.ts",
     "node_modules/ant-design-vue/typings/global.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
