@@ -1,11 +1,18 @@
 import { api } from "@/api"
 import type { ContactModule, ContactDetail, ContactFormState } from "@/interfaces/IContact"
 
+interface ContactFilterParams {
+    entity_id?: number
+    portfolio_id?: number
+}
+
 const SERVICE_PREFIX = 'contacts/'
 
 export class ContactService {
-    public async getContacts(){
-        const { data } = await api.get<ContactModule>(`${SERVICE_PREFIX}clients`)
+    public async getContacts(params?: ContactFilterParams){
+        const { data } = await api.get<ContactModule>(`${SERVICE_PREFIX}clients`, {
+            params
+        })
         return data
     }
     public async getContactDetail(id: number){
@@ -23,7 +30,8 @@ export class ContactService {
     }
     public async createContact(data: ContactFormState){
         try {
-            const response = await api.post(`${SERVICE_PREFIX}clients/create`, data)
+            const response = await api.post(`${SERVICE_PREFIX}clients/`, data)
+            return response
         } catch (error) {
             console.error('error in service: createContact')
         }
