@@ -2,6 +2,7 @@
   import { ref } from 'vue'
   import ContactFilter from '@/components/contact/ContactFilter.vue'
   import ContactDatatable from '@/components/contact/ContactDatatable.vue'
+  import CreateContactModal from '@/components/contact/modals/CreateContactModal.vue'
   import { PlusOutlined } from '@ant-design/icons-vue'
   import { ContactService } from '@/services/contact.service'
   import type { ContactModule } from '@/interfaces/IContact'
@@ -9,6 +10,8 @@
   const contactService = new ContactService()
 
   const moduleData = ref<ContactModule>()
+
+  const showCreateContactModal = ref(false)
 
   async function initData () {
     moduleData.value = await contactService.getContacts()
@@ -27,12 +30,13 @@
         </div>
         <ContactFilter />
         <a-button
-          class=""
+          @click="showCreateContactModal = true"
         >
           Crear contacto <PlusOutlined />
         </a-button>
       </div>
       <ContactDatatable v-if="moduleData" :data="moduleData.results" />
+      <CreateContactModal v-model="showCreateContactModal" />
     </a-layout-content>
   </a-layout>
 </template>
