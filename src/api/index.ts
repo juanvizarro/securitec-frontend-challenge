@@ -1,4 +1,5 @@
 import axios, { type AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios"
+import { generateToken, getToken } from '@/helpers/session.helper'
 
 enum StatusCode {
   Unauthorized = 401,
@@ -7,10 +8,13 @@ enum StatusCode {
   InternalServerError = 500,
 }
 
-const injectToken = (config: InternalAxiosRequestConfig) => {
+const injectToken = async (config: InternalAxiosRequestConfig) => {
   try {
-    // const token = Session.getToken()
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzExMzgzMDc4LCJpYXQiOjE3MTEzMDM4NzgsImp0aSI6IjQ1YTIwNDg2NzNlODRlY2I5M2MxZTQ0MjBiZGJmYjc0IiwidXNlcl9pZCI6MTMsImN1c3RvbWVyX2lkIjoyfQ.98I6rV4UhnDhaHu1M6_4FWzDt_ntRU3Xgnqrm3sujM0'
+    let token = getToken()
+    if(!token) {
+      // generate token with default test credentials
+      token = await generateToken()
+    }
 
     if (token != null) {
       config.headers.Authorization = `Bearer ${token}`
