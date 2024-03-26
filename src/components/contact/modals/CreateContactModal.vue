@@ -1,8 +1,19 @@
 <script setup lang="ts">
-    import { reactive, ref, computed } from 'vue'
+    import { reactive, ref, computed, onMounted } from 'vue'
     import { InfoCircleOutlined } from '@ant-design/icons-vue'
+    import { CampaginService } from '@/services/campaign.service'
+    import { ContactService } from '@/services/contact.service'
+    import { message } from 'ant-design-vue'
     import type { StepProps } from 'ant-design-vue'
     import type { ContactFormState } from '@/interfaces/IContact'
+    import type { Campaign } from '@/interfaces/ICampaign'
+
+    const emits = defineEmits<{
+        (e: 'refresh'): void
+    }>()
+
+    const campaignService = new CampaginService()
+    const contactService = new ContactService()
 
     const show = defineModel({ required: true, default: false})
 
@@ -20,7 +31,8 @@
         address: '',
         email: '',
         phone: '',
-        code_phone: '51'
+        code_phone: '51',
+        portfolio: null
     })
 
     const documentTypeOptions = ref([{ value: 1, label: 'DNI'}])
@@ -42,13 +54,30 @@
             key: 'action'
         }
     ])
-    const campaignData = ref([
-        {
-            key: 1,
-            entity_name: 'Empresa 1',
-            name: 'Campaña 1'
-        }
-    ])
+    const campaignData = ref<Campaign[]>([])
+    const campaignDataComputed = computed(() => ([
+        ...campaignData.value.map(({ id, entity, name }) => ({
+            id,
+            key: id,
+            entity_name: entity.name,
+            name
+        }))
+    ]))
+    
+    onMounted(async () => {
+        campaignData.value = await campaignService.getCampaigns()
+    })
+
+    async function onCreate(campaignId: number){
+        formState.portfolio = campaignId
+        const response = await contactService.createContact(formState)
+        emits('refresh')
+        message.success({
+            content: () => `Se ha agregado el contacto correctamente`,
+            class: 'confirm-notification'
+        })
+        show.value = false
+    }
 </script>
 <template>
     <a-modal
@@ -135,10 +164,10 @@
 
                 <div style="margin-top: 12px;">
                     <p>Selecciona la campaña donde quieres crear este nuevo contacto.</p>
-                    <a-table :columns="campaignColumns" :data-source="campaignData" :pagination="false">
+                    <a-table :columns="campaignColumns" :data-source="campaignDataComputed" :pagination="false">
                         <template #bodyCell="{ column, record }">
                             <template v-if="column.key === 'action'">
-                                <a-button type="link">Crear contacto aquí</a-button>
+                                <a-button type="link" @click="onCreate(record.id)">Crear contacto aquí</a-button>
                             </template>
                         </template>
                     </a-table>
