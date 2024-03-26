@@ -15,6 +15,9 @@
         data: Contact[]
         loadingData: boolean
     }>()
+    const emits = defineEmits<{
+        (e: 'refresh'): void
+    }>()
 
     const [modal, contextHolder] = Modal.useModal()
     const contactService = new ContactService()
@@ -173,6 +176,7 @@
             async onOk() {
                 try {
                     const response = await contactService.deleteContact(id)
+                    emits('refresh')
                     message.success({
                         content: () => `Se ha eliminado el contacto “${full_name}” correctamente`,
                         class: 'confirm-notification'

@@ -69,7 +69,7 @@
           </a-button>
         </a-flex>
       </div>
-      <ContactDatatable :data="moduleData?.results ?? []" :loading-data="loadingData" />
+      <ContactDatatable :data="moduleData?.results ?? []" :loading-data="loadingData" @refresh="initData" />
       <CreateContactModal v-model="showCreateContactModal" @refresh="initData" />
     </a-layout-content>
   </a-layout>
