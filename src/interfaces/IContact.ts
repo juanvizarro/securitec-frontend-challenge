@@ -104,3 +104,9 @@ export interface ContactFormState {
     code_phone: string
     portfolio: number|null
 }
+export interface ContactAdvancedFilters {
+    last_management_date_start?: string
+    last_management_date_end?: string
+    groups_id?: number[]
+    results_id?: number[]
+}
