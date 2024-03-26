@@ -102,4 +102,5 @@ export interface ContactFormState {
     email: string
     phone: string
     code_phone: string
+    portfolio: number|null
 }
