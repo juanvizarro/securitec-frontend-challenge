@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: #595959;
-  background-color: #242424;
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,18 +26,6 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
 .card {
   padding: 2em;
 }
@@ -47,4 +35,10 @@ button {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+.confirm-notification .ant-message-notice-content{
+  color: #595959;
+  font-size: 14px;
+  border: 1px solid #B7EB8F;
+  background-color: #F6FFED;
 }

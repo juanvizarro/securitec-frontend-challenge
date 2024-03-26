@@ -191,6 +191,7 @@
             :columns="columns"
             :data-source="props.data"
             :scroll="{ x: 2000 }"
+            auto-header-height
         >
             <template #bodyCell="{ column, record }">
                 <template v-if="column.dataIndex === 'full_name'">
@@ -257,15 +258,5 @@
     white-space: nowrap;
     overflow: hidden;
     text-align: start;
-}
-</style>
-<style lang="scss">
-.confirm-notification{
-    .ant-message-notice-content{
-        color: #595959;
-        font-size: 14px;
-        border: 1px solid #B7EB8F;
-        background-color: #F6FFED;
-    }
 }
 </style>
