@@ -13,6 +13,7 @@
 
     const props = defineProps<{
         data: Contact[]
+        loadingData: boolean
     }>()
 
     const [modal, contextHolder] = Modal.useModal()
@@ -192,6 +193,7 @@
             :data-source="props.data"
             :scroll="{ x: 2000 }"
             auto-header-height
+            :loading="props.loadingData"
         >
             <template #bodyCell="{ column, record }">
                 <template v-if="column.dataIndex === 'full_name'">
