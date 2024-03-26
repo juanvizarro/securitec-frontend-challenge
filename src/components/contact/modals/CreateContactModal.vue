@@ -70,7 +70,7 @@
 
     async function onCreate(campaignId: number){
         formState.portfolio = campaignId
-        const response = await contactService.createContact(formState)
+        await contactService.createContact(formState)
         emits('refresh')
         message.success({
             content: () => `Se ha agregado el contacto correctamente`,
