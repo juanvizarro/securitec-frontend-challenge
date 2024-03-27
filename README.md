@@ -34,8 +34,10 @@ npm run install
 - Add the following environment variables to your `.env` file
 
 `VITE_API_URL`
+`VITE_USERNAME` 
+`VITE_PASSWORD`
 
-#### Recommendation: copy the enviroment variables from `.env.example` file
+#### Recommendation: copy the enviroment variables from `.env.example` file. `VITE_USERNAME` and `VITE_PASSWORD` are those provided through the challenge document and must be enclosed in quotes
 
 - Run project
 
