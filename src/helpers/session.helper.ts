@@ -10,8 +10,8 @@ export const getToken = () => {
 }
 export const generateToken = async () => {
     const userData = {
-        username: 'elio.rodriguez@securitec.pe',
-        password: 'Hola123#'
+        username: import.meta.env.VITE_USERNAME,
+        password: import.meta.env.VITE_PASSWORD
     }
     const instace = axios.create({
         baseURL: import.meta.env.VITE_API_URL
