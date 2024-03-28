@@ -5,7 +5,6 @@
     import ContactDetailDrawer from '@/components/contact/drawers/ContactDetailDrawer.vue'
     import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons-vue'
     import { ContactService } from '@/services/contact.service'
-    import { STable } from '@surely-vue/table'
     import { Modal, message } from 'ant-design-vue'
     import { getDate } from '@/helpers/date.helper'
     import type { Contact } from '@/interfaces/IContact'
@@ -192,12 +191,13 @@
 </script>
 <template>
     <div>
-        <STable 
+        <a-table
             :columns="columns"
             :data-source="props.data"
-            :scroll="{ x: 2000 }"
+            :scroll="{ x: 1500 }"
             auto-header-height
             :loading="props.loadingData"
+            :row-key="'id'"
         >
             <template #bodyCell="{ column, record }">
                 <template v-if="column.dataIndex === 'full_name'">
@@ -243,7 +243,7 @@
                     </a-flex>
                 </template>
             </template>
-        </STable>
+        </a-table>
         <ContactDetailDrawer
             v-if="contactDetail"
             v-model="showContactDetailModal"

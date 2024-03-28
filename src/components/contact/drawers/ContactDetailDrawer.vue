@@ -2,7 +2,6 @@
     import { ref, h, computed } from 'vue'
     import { Modal } from 'ant-design-vue'
     import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
-    import { STable } from '@surely-vue/table'
     import { ContactService } from '@/services/contact.service'
     import type { Contact } from '@/interfaces/IContact'
     import type { Column } from '@/interfaces/GenericTypes'
@@ -153,11 +152,12 @@
 
             </a-tab-pane>
             <a-tab-pane key="phones" tab="Teléfonos" force-render>
-                <STable
+                <a-table
                     :columns="phonesTableColumns"
                     :data-source="phones"
                     :scroll="{ x: 2000 }"
                     :pagination="false"
+                    :key="'id'"
                 />
             </a-tab-pane>
         </a-tabs>
