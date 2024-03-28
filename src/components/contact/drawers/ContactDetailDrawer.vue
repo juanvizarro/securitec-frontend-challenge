@@ -44,7 +44,7 @@
         },
         {
             title: 'Apellido paterno',
-            value: 'missing data',
+            value: '',
             disabled: true
         },
         {
@@ -59,32 +59,32 @@
         },
         {
             title: 'Fecha de nacimiento',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'Edad',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'Sexo',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'Estado civil',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'País',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'Ciudad',
-            value: 1,
+            value: '',
             disabled: false
         },
     ])
