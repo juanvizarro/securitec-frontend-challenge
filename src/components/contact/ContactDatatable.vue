@@ -5,7 +5,6 @@
     import ContactDetailDrawer from '@/components/contact/drawers/ContactDetailDrawer.vue'
     import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons-vue'
     import { ContactService } from '@/services/contact.service'
-    import { STable } from '@surely-vue/table'
     import { Modal, message } from 'ant-design-vue'
     import { getDate } from '@/helpers/date.helper'
     import type { Contact } from '@/interfaces/IContact'
@@ -192,18 +191,19 @@
 </script>
 <template>
     <div>
-        <STable 
+        <a-table
             :columns="columns"
             :data-source="props.data"
-            :scroll="{ x: 2000 }"
+            :scroll="{ x: 1500 }"
             auto-header-height
             :loading="props.loadingData"
+            :row-key="'id'"
         >
             <template #bodyCell="{ column, record }">
                 <template v-if="column.dataIndex === 'full_name'">
                     <a-button
                         type="link"
-                        @click="showContactDetail(record, 'info')"
+                        @click="showContactDetail(record as Contact, 'info')"
                     >
                         <span class="full-name">{{ record[column.dataIndex] }}</span>
                     </a-button>
@@ -211,7 +211,7 @@
                 <template v-if="column.dataIndex === 'phones'">
                     <a-button
                         type="link"
-                        @click="showContactDetail(record, 'phones')"
+                        @click="showContactDetail(record as Contact, 'phones')"
                     >
                         {{ record?.phones?.length ?? 0 }} {{ (record?.phones?.length ?? 0) > 1 ? 'teléfonos' : 'teléfono' }}
                     </a-button>
@@ -243,7 +243,7 @@
                     </a-flex>
                 </template>
             </template>
-        </STable>
+        </a-table>
         <ContactDetailDrawer
             v-if="contactDetail"
             v-model="showContactDetailModal"

@@ -8,6 +8,9 @@ export const setToken = (token: string) => {
 export const getToken = () => {
     return localStorage.getItem(LS_TOKEN_NAME)
 }
+export const deleteToken = () => {
+    localStorage.removeItem(LS_TOKEN_NAME)
+}
 export const generateToken = async () => {
     const userData = {
         username: import.meta.env.VITE_USERNAME,
