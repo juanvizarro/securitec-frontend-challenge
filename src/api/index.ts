@@ -1,5 +1,5 @@
 import axios, { type AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios"
-import { generateToken, getToken } from '@/helpers/session.helper'
+import { generateToken, getToken, deleteToken } from '@/helpers/session.helper'
 
 enum StatusCode {
   Unauthorized = 401,
@@ -87,7 +87,7 @@ class Api {
     return this.http.delete<T, R>(url, config);
   }
 
-  private handleError(error: any|undefined) {
+  private async handleError(error: any|undefined) {
     if(!error) return
     console.log('handle error:', error)
     const { status } = error;
@@ -102,7 +102,9 @@ class Api {
       break
     }
     case StatusCode.Unauthorized: {
-      // Handle Unauthorized
+      deleteToken()
+      // set new token
+      await generateToken()
       break
     }
     case StatusCode.TooManyRequests: {
