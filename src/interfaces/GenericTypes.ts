@@ -1,3 +1,3 @@
-import type { STableProps } from '@surely-vue/table'
+import type { TableColumnsType } from 'ant-design-vue'
 
-export type Column = STableProps['columns']
+export type Column = TableColumnsType
