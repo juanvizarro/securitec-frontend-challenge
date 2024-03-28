@@ -203,7 +203,7 @@
                 <template v-if="column.dataIndex === 'full_name'">
                     <a-button
                         type="link"
-                        @click="showContactDetail(record, 'info')"
+                        @click="showContactDetail(record as Contact, 'info')"
                     >
                         <span class="full-name">{{ record[column.dataIndex] }}</span>
                     </a-button>
@@ -211,7 +211,7 @@
                 <template v-if="column.dataIndex === 'phones'">
                     <a-button
                         type="link"
-                        @click="showContactDetail(record, 'phones')"
+                        @click="showContactDetail(record as Contact, 'phones')"
                     >
                         {{ record?.phones?.length ?? 0 }} {{ (record?.phones?.length ?? 0) > 1 ? 'teléfonos' : 'teléfono' }}
                     </a-button>

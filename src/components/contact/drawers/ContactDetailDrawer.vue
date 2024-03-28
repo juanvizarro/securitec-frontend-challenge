@@ -90,7 +90,7 @@
 
     // TODO: phones data is missing
     const phones = ref([])
-    const phonesTableColumns = <Column[]>[
+    const phonesTableColumns = <Column>[
         // {
         //     title: 'cod',
         //     dataIndex: 'another',
