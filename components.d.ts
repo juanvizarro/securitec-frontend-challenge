@@ -38,13 +38,10 @@ declare module 'vue' {
     Channels: typeof import('./src/components/Channels.vue')['default']
     ContactDatatable: typeof import('./src/components/contact/ContactDatatable.vue')['default']
     ContactDetailDrawer: typeof import('./src/components/contact/drawers/ContactDetailDrawer.vue')['default']
-    ContactDetailModal: typeof import('./src/components/contact/modals/ContactDetailModal.vue')['default']
     ContactFilter: typeof import('./src/components/contact/ContactFilter.vue')['default']
     ContactHeader: typeof import('./src/components/contact/ContactHeader.vue')['default']
     ContactQueues: typeof import('./src/components/contact/ContactQueues.vue')['default']
     ContactSider: typeof import('./src/components/contact/ContactSider.vue')['default']
     CreateContactModal: typeof import('./src/components/contact/modals/CreateContactModal.vue')['default']
-    DeleteContactModal: typeof import('./src/components/contact/modals/DeleteContactModal.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
   }
 }

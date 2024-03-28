@@ -2,7 +2,6 @@
     import { ref, h, computed } from 'vue'
     import { Modal } from 'ant-design-vue'
     import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
-    import { STable } from '@surely-vue/table'
     import { ContactService } from '@/services/contact.service'
     import type { Contact } from '@/interfaces/IContact'
     import type { Column } from '@/interfaces/GenericTypes'
@@ -44,7 +43,7 @@
         },
         {
             title: 'Apellido paterno',
-            value: 'missing data',
+            value: '',
             disabled: true
         },
         {
@@ -59,39 +58,39 @@
         },
         {
             title: 'Fecha de nacimiento',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'Edad',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'Sexo',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'Estado civil',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'País',
-            value: 1,
+            value: '',
             disabled: false
         },
         {
             title: 'Ciudad',
-            value: 1,
+            value: '',
             disabled: false
         },
     ])
 
     // TODO: phones data is missing
     const phones = ref([])
-    const phonesTableColumns = <Column[]>[
+    const phonesTableColumns = <Column>[
         // {
         //     title: 'cod',
         //     dataIndex: 'another',
@@ -153,11 +152,12 @@
 
             </a-tab-pane>
             <a-tab-pane key="phones" tab="Teléfonos" force-render>
-                <STable
+                <a-table
                     :columns="phonesTableColumns"
                     :data-source="phones"
                     :scroll="{ x: 2000 }"
                     :pagination="false"
+                    :key="'id'"
                 />
             </a-tab-pane>
         </a-tabs>

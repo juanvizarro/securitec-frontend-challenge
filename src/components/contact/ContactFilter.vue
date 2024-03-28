@@ -23,11 +23,11 @@
     const stateSelected = ref(0)
     const actionsMadeSelected = ref(0)
     const viewTypeSelected = ref(0)
-    const groupSelected = ref<number[]|null>(null)
-    const resultSelected = ref<number[]|null>(null)
+    const groupSelected = ref<number[]>([])
+    const resultSelected = ref<number[]>([])
     
-    const fromDate = ref<string|null>(null)
-    const toDate = ref<string|null>(null)
+    const fromDate = ref<string>('')
+    const toDate = ref<string>('')
 
     const entityOptions = computed<SelectProps['options']>(() => [
         { value: 0, label: 'Todas las empresas'},
@@ -66,8 +66,8 @@
 
     function clearFilters(){
         actionsMadeSelected.value = 0
-        groupSelected.value = null
-        resultSelected.value = null
+        groupSelected.value = []
+        resultSelected.value = []
         viewTypeSelected.value = 0
     }
     function applyFilters(){
@@ -88,10 +88,10 @@
     watch(actionsMadeSelected, (val) => {
         if(val === 2){
             tipificationSelectDisabled.value = true
-            groupSelected.value = null
-            resultSelected.value = null
-            fromDate.value = null
-            toDate.value = null
+            groupSelected.value = []
+            resultSelected.value = []
+            fromDate.value = ''
+            toDate.value = ''
         } else{
             tipificationSelectDisabled.value = false
         }
